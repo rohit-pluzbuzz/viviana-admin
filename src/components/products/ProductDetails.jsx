@@ -6,8 +6,8 @@ import { useProduct } from "../../context/ProductContext";
 import { ArrowLeft, Pencil, Trash2, X } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 
-
-const ProductDetails = () => {
+  const API_BASE = (import.meta.env.VITE_API_URL && import.meta.env.VITE_API_URL.trim())|| "https://localhost:5000";
+  const ProductDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { fetchProductById, deleteProduct } = useProduct();
@@ -67,7 +67,7 @@ const ProductDetails = () => {
                     key={index}
                     src={`http://localhost:5000${img}`}
                     alt={`Product ${index}`}
-                    onClick={() => setModalImage(`http://localhost:5000${img}`)}
+                    onClick={() => setModalImage(`${API_BASE}${img}`)}
                     className="w-full h-40 object-cover rounded-lg cursor-pointer hover:scale-105 transition-transform"
                   />
                 ))}
