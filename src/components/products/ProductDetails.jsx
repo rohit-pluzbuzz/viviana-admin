@@ -65,7 +65,7 @@ import { useAuth } from "../../context/AuthContext";
                 {product.images.map((img, index) => (
                   <img
                     key={index}
-                    src={`http://localhost:5000${img}`}
+                    src={`${API_BASE}${img}`}
                     alt={`Product ${index}`}
                     onClick={() => setModalImage(`${API_BASE}${img}`)}
                     className="w-full h-40 object-cover rounded-lg cursor-pointer hover:scale-105 transition-transform"
