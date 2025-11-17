@@ -7,7 +7,7 @@ const Sidebar = () => {
     <aside className="w-64 h-screen bg-gray-900 text-white flex flex-col fixed left-0 top-0 z-10">
       {/* Logo + Branding */}
       <div className="px-6 py-4 flex items-center gap-3 ">
-        <img src="logo.png" alt="Viviana Logo" className="h-10 w-10 rounded-full object-contain" />
+        <img src="../assests/logo.png" alt="Viviana Logo" className="h-10 w-10 rounded-full object-contain" />
         <h1 className="text-xl font-semibold tracking-wide">VIVIANA CMS</h1>
       </div>
 
