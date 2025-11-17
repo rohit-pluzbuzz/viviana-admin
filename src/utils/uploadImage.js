@@ -5,7 +5,7 @@ export const uploadImage = async (imageFile) => {
   formData.append("image", imageFile);
 
   
-  const API_BASE = (import.meta.env.VITE_API_URL && import.meta.env.VITE_API_URL.trim()) || "http://localhost:5000";
+  const API_BASE = (import.meta.env.VITE_APP_API_URL && import.meta.env.VITE_APP_API_URL.trim()) || "http://localhost:5000";
   const response = await fetch('${API_BASE}/api/upload', {
     method: "POST",
     body: formData,
