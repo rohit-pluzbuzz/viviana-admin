@@ -8,6 +8,7 @@ import { uploadImage } from "../../utils/uploadImage";
 import { useAuth } from "../../context/AuthContext";
 
 const ProductForm = () => {
+  const API_BASE = (import.meta.env.VITE_API_URL && import.meta.env.VITE_API_URL.trim()) || "";
   const navigate = useNavigate();
   const { id } = useParams();
   const { categories } = useCategory();
