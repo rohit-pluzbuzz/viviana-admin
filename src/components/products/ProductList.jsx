@@ -11,6 +11,7 @@ import { useAuth } from "../../context/AuthContext";
 
 
 const ProductList = () => {
+  const API_BASE = (import.meta.env.VITE_API_URL && import.meta.env.VITE_API_URL.trim()) || "";
   const { products, deleteProduct, fetchAllProducts } = useProduct();
   const { categories, fetchAllCategories } = useCategory();
 
@@ -199,7 +200,7 @@ const ProductList = () => {
                   <td className="p-3">
                     {product.images?.[0] ? (
                       <img
-                        src={`http://localhost:5000${product.images[0]}`}
+                        src={`${API_BASE}${product.images[0]}`}
                         alt={product.name}
                         className="w-14 h-14 object-cover rounded"
                       />
