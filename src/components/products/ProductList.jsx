@@ -200,10 +200,17 @@ const ProductList = () => {
                   <td className="p-3">
                     {product.images?.[0] ? (
                       <img
-                        src={`${API_BASE}${product.images[0]}`}
+                        src={
+                          product.images?.length > 0
+                            ? (product.images[0].startsWith("http")
+                                ? product.images[0]
+                                : `${API_BASE}${product.images[0]}`)
+                            : "https://via.placeholder.com/300x300?text=No+Image"
+                        }
                         alt={product.name}
-                        className="w-14 h-14 object-cover rounded"
+                          className="w-full h-auto md:h-96 object-cover"
                       />
+
                     ) : (
                       <span className="text-gray-400 italic">No Image</span>
                     )}
