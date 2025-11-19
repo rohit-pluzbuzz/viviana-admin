@@ -221,13 +221,13 @@ const ProductForm = () => {
             {imagePreviews.map((img, index) => (
               <div key={index} className="relative group overflow-hidden">
                 <img
-                    key={index}
-                    src={`${API_BASE}${img}`}
-                    alt={`Product ${index}`}
-                    onClick={() => setModalImage(`${API_BASE}${img}`)}
-                    className="w-full h-40 object-cover rounded-lg cursor-pointer hover:scale-105 transition-transform"
-                  />
-                <button
+                  key={index}
+                  src={img.startsWith("blob:") ? img : `${API_BASE}${img}`}
+                  alt={`Product ${index}`}
+                  onClick={() => setModalImage(img.startsWith("blob:") ? img : `${API_BASE}${img}`)}
+                  className="w-full h-40 object-cover rounded-lg cursor-pointer hover:scale-105 transition-transform"
+                />
+
                   type="button"
                   onClick={() => removeImage(index)}
                   className="absolute top-2 right-2 bg-red-600 text-white p-1 rounded-full text-xs hover:bg-red-700"
