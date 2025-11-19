@@ -21,16 +21,10 @@ export const uploadImage = async (file) => {
 
   const data = await res.json();
 
-  // Your backend returns:
-  // { filePath: "/uploads/filename.png", fullUrl: "http://..." }
+  // Backend returns: { filePath: "/uploads/xxx.png", fullUrl: "http://..." }
+  if (data.fullUrl) return data.fullUrl;
 
-  if (data.fullUrl) {
-    return data.fullUrl; // BEST OPTION
-  }
-
-  if (data.filePath) {
-    return `${API_BASE}${data.filePath}`;
-  }
+  if (data.filePath) return `${API_BASE}${data.filePath}`;
 
   throw new Error("Unexpected upload response: " + JSON.stringify(data));
 };
