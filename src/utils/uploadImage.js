@@ -7,11 +7,11 @@ export const uploadImage = async (file) => {
   const form = new FormData();
   form.append('image', file); // 'image' must match multer.single('image') on backend
 
-  // Do NOT set Content-Type manually.
+  // IMPORTANT: do NOT set Content-Type header manually; the browser will set the boundary for multipart/form-data.
   const res = await fetch(`${API_BASE}/api/upload`, {
     method: 'POST',
     body: form,
-    credentials: 'include' // optional if you use cookies/auth
+    credentials: 'include' // optional: if your backend uses cookies/auth
   });
 
   if (!res.ok) {
@@ -21,6 +21,7 @@ export const uploadImage = async (file) => {
 
   const data = await res.json();
 
+  // backend returns fullUrl and filePath. Prefer fullUrl if present, otherwise build from API_BASE + filePath
   if (data.fullUrl && data.fullUrl.startsWith('http')) {
     return data.fullUrl;
   }
